@@ -8,7 +8,7 @@ import { GridOptions } from 'ag-grid';
 })
 export class BlotterComponent implements OnInit {
   ngOnInit(): void {
-    throw new Error("Method not implemented.");
+    
   }
 
   private gridOptions: GridOptions;
