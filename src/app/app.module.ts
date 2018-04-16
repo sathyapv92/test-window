@@ -11,6 +11,7 @@ import {AgGridModule} from "ag-grid-angular/main";
 import {MatDialogModule} from '@angular/material/dialog';
 import { DComponent, DialogOverviewExampleDialog } from './d/d.component';
 import {RouterModule} from '@angular/router';
+import { DataService } from './data.service';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,7 @@ import {RouterModule} from '@angular/router';
     AgGridModule.withComponents(
       [])
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, NgForm } from '@angular/forms';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'deal-entry',
@@ -8,9 +9,18 @@ import { FormBuilder, FormGroup, FormControl, NgForm } from '@angular/forms';
 })
 export class DealEntryComponent implements OnInit {
 
-  constructor(private fb : FormBuilder) { }
+  constructor(private fb : FormBuilder,private data: DataService) { }
   myGroup :FormGroup;
+  @Input() myWindow: Window;
+  message:string;
+  closeWin() {
+    this.data.changeMessage("close");
+    if (this.myWindow) {
+      this.myWindow.close();
+    }
+  }
   ngOnInit() {
+    this.data.currentMessage.subscribe(message => this.message = message)
      this.myGroup = new FormGroup({
        branch: new FormControl('Demo Branch'),
       currency: new FormControl('Eur'),
